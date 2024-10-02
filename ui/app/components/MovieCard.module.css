@@ -1,6 +1,6 @@
 .moviecard {
   max-width: 150px;
-  transition: 0.4s cubic-bezier(0.87, -1.38, 0.03, 1.54);
+  transition: 0.5s cubic-bezier(0.71, -0.88, 0.32, 1.44);
 }
 .moviecard:hover {
   max-width: 200px;

@@ -3,36 +3,26 @@
 import { Movie } from '@/app/types/movie';
 import Image from 'next/image';
 import styles from './MovieCard.module.css';
-import { useEffect, useState } from 'react';
 
 interface MovieCardProps {
   movie: Movie;
   onSelect: (movie: Movie) => void;
+  selectedId: string | null;
 }
 
-const MovieCard = ({ movie, onSelect }: MovieCardProps) => {
-  const [selectedMovie, setSelectedMovie] = useState<Movie>();
-
-  const handleOnClick = () => {
-    onSelect(movie);
-    setSelectedMovie(movie);
-  };
-
-  useEffect(() => {
-    console.log(selectedMovie);
-  }, [selectedMovie]);
+const MovieCard = ({ movie, onSelect, selectedId }: MovieCardProps) => {
   return (
     <div
       key={movie._id}
       className="flex rounded-lg cursor-pointer z-20"
-      onClick={handleOnClick}
+      onClick={() => onSelect(movie)}
     >
       <div
         className={`${styles.moviecard} ${
-          selectedMovie && selectedMovie._id === movie._id
-            ? 'brightness-100'
+          selectedId === movie._id
+            ? 'brightness-100 -translate-y-2'
             : 'brightness-50'
-        } h-[100px] lg:h-[150px] xl:h-[200px] brightness-50 hover:brightness-100 transition-all duration-200 ease-in-out`}
+        } h-[100px] lg:h-[150px] xl:h-[200px] transition-all duration-400 ease-in-out`}
       >
         <Image
           quality={100}

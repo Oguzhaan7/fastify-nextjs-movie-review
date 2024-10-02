@@ -31,14 +31,17 @@ const MovieList = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full items-center justify-between">
-      <Carousel movie={selectedMovie} />
+    <div className="flex flex-col w-full h-[80vh] items-center justify-evenly xl:justify-between">
+      <div className="2xl:mt-32 3xl:mt-44">
+        <Carousel movie={selectedMovie} />
+      </div>
 
-      <div className="flex gap-2 fixed z-10 bottom-20">
+      <div className="flex gap-2 z-10">
         {movies.map((movie) => (
           <MovieCard
             key={movie._id}
             movie={movie}
+            selectedId={selectedMovie && selectedMovie._id}
             onSelect={setSelectedMovie}
           />
         ))}
