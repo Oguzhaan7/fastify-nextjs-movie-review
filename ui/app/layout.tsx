@@ -31,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        suppressHydrationWarning={true}
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
         <div className="grid grid-rows-[auto,1fr,auto] min-h-screen bg-gradient-to-b from-transparent to-black">

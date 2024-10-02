@@ -1,4 +1,4 @@
-import MovieList from '@/app/components/movie-list';
+import MovieList from '@/app/components/MovieList';
 
 const Home = async () => {
   return (

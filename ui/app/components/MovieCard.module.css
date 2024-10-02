@@ -1,0 +1,34 @@
+.moviecard {
+  max-width: 150px;
+  transition: 0.4s cubic-bezier(0.87, -1.38, 0.03, 1.54);
+}
+.moviecard:hover {
+  max-width: 200px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .moviecard {
+    max-width: 140px;
+  }
+  .moviecard:hover {
+    max-width: 180px;
+  }
+}
+
+@media only screen and (max-width: 968px) {
+  .moviecard {
+    max-width: 110px;
+  }
+  .moviecard:hover {
+    max-width: 140px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .moviecard {
+    max-width: 80px;
+  }
+  .moviecard:hover {
+    max-width: 120px;
+  }
+}

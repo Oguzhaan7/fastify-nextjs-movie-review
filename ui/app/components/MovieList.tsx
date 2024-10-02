@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Movie } from '@/app/types/movie';
-import Carousel from '@/app/components/carousel';
-import MovieCard from '@/app/components/movie-card';
+import Carousel from '@/app/components/Carousel';
+import MovieCard from './MovieCard';
 
 const MovieList = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -34,7 +34,7 @@ const MovieList = () => {
     <div className="flex flex-col w-full items-center justify-between">
       <Carousel movie={selectedMovie} />
 
-      <div className="flex gap-12 fixed z-10 bottom-20">
+      <div className="flex gap-2 fixed z-10 bottom-20">
         {movies.map((movie) => (
           <MovieCard
             key={movie._id}
