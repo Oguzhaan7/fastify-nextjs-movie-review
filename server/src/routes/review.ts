@@ -14,7 +14,7 @@ export const reviewRoutes = async (fastify: FastifyInstance) => {
     async (request: FastifyRequest, reply: FastifyReply) => {
       const { movieId, rating } = request.body as {
         movieId: string;
-        rating: string;
+        rating: number;
       };
       const userId = request.user._id;
 

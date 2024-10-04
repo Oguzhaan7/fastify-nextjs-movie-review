@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Movie } from '../types/movie';
+import { Movie } from '../../types/movie';
 import Image from 'next/image';
 import { AiFillStar } from 'react-icons/ai';
 
@@ -47,13 +47,13 @@ const Carousel = ({ movie }: CarouselProps) => {
       >
         <button
           onClick={() => alert(1)}
-          className="px-8 py-3 border-2 border-amber-300 text-slate-200 opacity-90 rounded-lg text-xl hover:text-white hover:border-amber-500 "
+          className="px-8 py-3 border-2 border-amber-300 text-slate-200 opacity-90 rounded-lg text-xl hover:text-white hover:border-amber-500"
         >
           Leave a Review
         </button>
         <div className="flex gap-2 items-center text-zinc-400">
           <AiFillStar className="text-2xl" />
-          <span className="text-lg">4.3 Rating</span>
+          <span className="text-lg">{displayedMovie.averageRating} Rating</span>
         </div>
       </div>
       <Image

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Movie } from '@/app/types/movie';
-import Carousel from '@/app/components/Carousel';
+import Carousel from '@/app/components/movie/Carousel';
 import MovieCard from './MovieCard';
 
 const MovieList = () => {
@@ -32,7 +32,7 @@ const MovieList = () => {
 
   return (
     <div className="flex flex-col w-full h-[80vh] items-center justify-evenly xl:justify-between">
-      <div className="2xl:mt-32 3xl:mt-44">
+      <div className="2xl:mt-24 3xl:mt-44">
         <Carousel movie={selectedMovie} />
       </div>
 

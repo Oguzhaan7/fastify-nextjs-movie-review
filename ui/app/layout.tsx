@@ -4,8 +4,8 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.min.css';
 import './globals.css';
 import 'primereact/resources/themes/mdc-light-indigo/theme.css';
-import Header from '@/app/components/layout/header';
-import Footer from '@/app/components/layout/footer';
+import Header from '@/app/components/layout/Header';
+import Footer from '@/app/components/layout/Footer';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',

@@ -18,6 +18,13 @@ export const moveiRoutes = async (fastify: FastifyInstance) => {
   fastify.get("/", async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const movies = await MovieModel.find().populate("reviews");
+      movies.map(
+        (movie) =>
+          (movie.averageRating =
+            movie.reviews
+              .map((review) => review.rating)
+              .reduce((acc, curr) => acc + curr, 0) / movie.reviewCount)
+      );
       reply.send(movies);
     } catch (error) {
       reply.status(500).send({ error: "Error fetching movies" });

@@ -7,6 +7,7 @@ export interface Movie {
   genres: string[];
   cast: string[];
   posterUrl: string;
+  reviews: string[];
   averageRating?: number;
   reviewCount?: number;
 }
