@@ -15,17 +15,33 @@ export const moveiRoutes = async (fastify: FastifyInstance) => {
   fastify.register(multipart);
 
   //get all movies
-  fastify.get("/", async (request: FastifyRequest, reply: FastifyReply) => {
+  fastify.post("/", async (request: FastifyRequest, reply: FastifyReply) => {
     try {
-      const movies = await MovieModel.find().populate("reviews");
-      movies.map(
-        (movie) =>
-          (movie.averageRating =
-            movie.reviews
-              .map((review) => review.rating)
-              .reduce((acc, curr) => acc + curr, 0) / movie.reviewCount)
-      );
-      reply.send(movies);
+      const { genreId } = request.body as { genreId: string };
+
+      let query = {};
+
+      if (genreId) query = { genres: genreId };
+      console.log(query);
+
+      const movies = await MovieModel.find(query)
+        .populate("reviews")
+        .sort({ createtdAt: -1 })
+        .limit(5);
+
+      if (movies.length < 1) {
+        reply.status(404).send({ error: "The movies not found" });
+      } else {
+        movies.map(
+          (movie) =>
+            (movie.averageRating =
+              movie.reviews
+                .map((review) => review.rating)
+                .reduce((acc, curr) => acc + curr, 0) / movie.reviewCount)
+        );
+
+        reply.send(movies);
+      }
     } catch (error) {
       reply.status(500).send({ error: "Error fetching movies" });
     }
@@ -61,13 +77,6 @@ export const moveiRoutes = async (fastify: FastifyInstance) => {
       }-${Date.now()}${fileExtension}`;
       const filePath = path.join(__dirname, "../../uploads", fileName);
 
-      await new Promise<void>((resolve, reject) => {
-        const writeStream = fs.createWriteStream(filePath);
-        file.pipe(writeStream);
-        file.on("end", () => resolve());
-        file.on("error", (err: any) => reject(err));
-      });
-
       try {
         const movie = new MovieModel({
           title: fields.title.value,
@@ -77,6 +86,13 @@ export const moveiRoutes = async (fastify: FastifyInstance) => {
           genres: JSON.parse(fields.genres.value),
           cast: JSON.parse(fields.cast.value),
           posterUrl: `/uploads/${fileName}`,
+        });
+
+        await new Promise<void>((resolve, reject) => {
+          const writeStream = fs.createWriteStream(filePath);
+          file.pipe(writeStream);
+          file.on("end", () => resolve());
+          file.on("error", (err: any) => reject(err));
         });
 
         await movie.save();

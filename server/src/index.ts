@@ -7,6 +7,7 @@ import fastifyCors from "@fastify/cors";
 import { userRoutes } from "./routes/user";
 import { moveiRoutes } from "./routes/movie";
 import { reviewRoutes } from "./routes/review";
+import { genreRoutes } from "./routes/genre";
 
 import mongoose from "mongoose";
 
@@ -30,6 +31,7 @@ fastify.register(staticPlugin);
 fastify.register(userRoutes, { prefix: "/api/user" });
 fastify.register(moveiRoutes, { prefix: "/api/movie" });
 fastify.register(reviewRoutes, { prefix: "/api/review" });
+fastify.register(genreRoutes, { prefix: "/api/genre" });
 
 const start = async () => {
   try {

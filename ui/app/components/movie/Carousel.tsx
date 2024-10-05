@@ -49,7 +49,7 @@ const Carousel = ({ movie }: CarouselProps) => {
           onClick={() => alert(1)}
           className="px-8 py-3 border-2 border-amber-300 text-slate-200 opacity-90 rounded-lg text-xl hover:text-white hover:border-amber-500"
         >
-          Leave a Review
+          View Detail
         </button>
         <div className="flex gap-2 items-center text-zinc-400">
           <AiFillStar className="text-2xl" />
@@ -57,7 +57,12 @@ const Carousel = ({ movie }: CarouselProps) => {
         </div>
       </div>
       <Image
-        src={`http://localhost:5000${displayedMovie.posterUrl}`}
+        priority={true}
+        src={
+          fade
+            ? '/placeholder.jpg'
+            : `http://localhost:5000${displayedMovie.posterUrl}`
+        }
         alt={`${displayedMovie.title} poster`}
         fill
         className={`-z-10 absolute transition-all ease-in-out duration-500 ${

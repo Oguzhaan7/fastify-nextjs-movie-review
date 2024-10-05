@@ -18,7 +18,7 @@ const MovieSchema = new Schema({
     required: true,
   },
   genres: {
-    type: Schema.Types.ObjectId,
+    type: [Schema.Types.ObjectId],
     ref: "Genre",
   },
   cast: {

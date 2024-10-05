@@ -25,6 +25,7 @@ const MovieCard = ({ movie, onSelect, selectedId }: MovieCardProps) => {
         } h-[100px] lg:h-[150px] xl:h-[200px] transition-all duration-400 ease-in-out hover:brightness-100`}
       >
         <Image
+          priority={true}
           quality={100}
           height={200}
           width={150}

@@ -13,6 +13,13 @@ const MovieList = () => {
     const fetchMovies = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/movie', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            genreId: '64fe123456789abcdef12346',
+          }),
           next: {
             revalidate: 10,
           },
