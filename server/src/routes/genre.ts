@@ -36,7 +36,7 @@ export const genreRoutes = async (fastify: FastifyInstance) => {
     "/getAll",
     async (request: FastifyRequest, reply: FastifyReply) => {
       try {
-        const genres = GenreModel.find().sort({ name: 1 });
+        const genres = await GenreModel.find().sort({ name: 1 });
         reply.send(genres);
       } catch (error) {
         reply.status(500).send({ error: "Error fetching genres" });

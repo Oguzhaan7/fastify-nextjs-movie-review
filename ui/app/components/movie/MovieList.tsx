@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Movie } from '@/app/types/movie';
 import Carousel from '@/app/components/movie/Carousel';
 import MovieCard from './MovieCard';
+import GenreDropdown from './Genre';
 
 const MovieList = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -18,7 +19,8 @@ const MovieList = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            genreId: '64fe123456789abcdef12346',
+            genreId: '',
+            // genreId: '64fe123456789abcdef12346',
           }),
           next: {
             revalidate: 10,
@@ -42,7 +44,9 @@ const MovieList = () => {
       <div className="2xl:mt-24 3xl:mt-44">
         <Carousel movie={selectedMovie} />
       </div>
-
+      <div className="flex justify-end w-full z-20 ">
+        <GenreDropdown />
+      </div>
       <div className="flex gap-2 z-10">
         {movies.map((movie) => (
           <MovieCard

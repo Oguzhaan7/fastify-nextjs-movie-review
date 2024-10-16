@@ -22,7 +22,6 @@ export const moveiRoutes = async (fastify: FastifyInstance) => {
       let query = {};
 
       if (genreId) query = { genres: genreId };
-      console.log(query);
 
       const movies = await MovieModel.find(query)
         .populate("reviews")
