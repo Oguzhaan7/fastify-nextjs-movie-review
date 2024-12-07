@@ -32,4 +32,5 @@ This project is a web application for movie reviews, built using Fastify and Nex
 - **Next.js: A React framework for server-side rendering and static site generation.**
 - **TypeScript: A statically typed superset of JavaScript.**
 - **Tailwindcss**
+- **Mongodb**
   
